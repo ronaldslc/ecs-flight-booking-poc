@@ -1,0 +1,28 @@
+#
+# 1. `docker build `
+#
+version: "3.7"
+services:
+  awsctrl:
+    container_name: awsctrl
+    image: awsctrl:latest
+    entrypoint: "/bin/bash"
+    command: "-c 'trap : TERM INT; sleep infinity & wait'"
+    working_dir: "/workspace"
+    volumes:
+      - type: volume
+        source: home
+        target: /root
+        consistency: delegated
+      - type: bind
+        source: ../../
+        target: /workspace
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    networks:
+      - devenv
+volumes:
+  home:
+networks:
+  devenv:
