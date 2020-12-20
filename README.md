@@ -6,9 +6,9 @@ built and uploaded to AWS ECR.
 This setup allows the use of X-Ray and WAF and only a single, high performance
 NLB
 
+*This is a work in progress*
 
-
-NOTES:
+## NOTES
 - Virtual Gateway through AppMesh *does* rewrite routes ((https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_gateways.html))
   so each "microservice" can adhere better to DDD subdomain by utilising its own bounded context with a clean REST API 
 - API Gateway (HTTP API) VPC Link currently does not work for all AZs AND the subnets selector does not work (https://github.com/aws/aws-cdk/issues/12083)
